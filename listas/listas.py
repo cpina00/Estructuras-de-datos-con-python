@@ -9,18 +9,6 @@ class LinkedList:
         self.start_node = None
         self._len = 0
         self.iter = self.start_node
-    
-    def __str__(self):
-        if self.start_node is None:
-            return "[]"
-        else:
-            n = self.start_node
-            message = "["
-            while n is not None:
-                message = message + "'" + str(n.item) + "'" + ", "
-                n = n.ref
-            message = message[:-2] + "]"
-        return message
 
     def insert_at_start(self, data):
         new_node = Node(data)
@@ -52,15 +40,33 @@ class LinkedList:
     
     def remove_to_index(self,index):
         pass
-    
       
+    ### Estos 4 métodos son esenciales para que funcionen los test.
+    # NO TOCAR... 
+
+    def __str__(self):
+        """ this method is for print(), return the contain of list. """
+        if self.start_node is None:
+            return "[]"
+        else:
+            n = self.start_node
+            message = "["
+            while n is not None:
+                message = message + "'" + str(n.item) + "'" + ", "
+                n = n.ref
+            message = message[:-2] + "]"
+        return message
+    
     def __len__(self):
+        """ this method, is for len(), return the amount of elements in this list """
         return self._len
     
     def __iter__(self):
+        """ this method if for the sentence 'for element in LinkedList: It allows the execute"""
         return self
     
     def __next__(self):
+        """ this method if for the sentence 'for element in LinkedList: return one a one elements for each iteration """
         if self.iter == None:
             raise StopIteration()
         else:
@@ -70,16 +76,6 @@ class LinkedList:
             
     
 if __name__=="__main__":
-    cont=2
-    l = LinkedList() #    l.start_node = None
-    l.insert_at_start("Juaquin Perez")
-    l.insert_at_start("alejandra prieto")
-    l.insert_at_start("emilio moyano")
-    p = ["emilio moyano","alejandra prieto","Juaquin Perez"]
-    a = []
-    b = LinkedList()
-    #print("a:",a,"b:",b)
-    #print("con ", cont, ": ",l)
-    #print(len(l))
-    #print(p)
-    #print(l)
+    # aqui pueden hacer sus pruebas para codear, pero no toquen el archivo test.py
+    
+    pass
