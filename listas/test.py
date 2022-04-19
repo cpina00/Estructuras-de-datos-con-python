@@ -2,10 +2,7 @@
 #                   NO MODIFICAR ESTE ARCHIVO
 # -------------------------------------------------------------------
 
-
-
 import unittest
-
 from listas import LinkedList
 
 # Los comentarios con tres comillas dobles, son 'doc string', lo que significa que python, los considerará
