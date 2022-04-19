@@ -8,20 +8,17 @@ class LinkedList:
     def __init__(self):
         self.start_node = None
         self._len = 0
-        self.iter = self.start_node
 
     def insert_at_start(self, data):
         new_node = Node(data)
         new_node.ref = self.start_node
         self.start_node = new_node
-        self.iter = self.start_node
         self._len +=1
         
     def insert_at_end(self, data):
         new_node = Node(data)
         if self.start_node is None:
             self.start_node = new_node
-            self.iter = self.start_node
         else:
             n = self.start_node
             while n.ref is not None:
@@ -63,6 +60,7 @@ class LinkedList:
     
     def __iter__(self):
         """ this method if for the sentence 'for element in LinkedList: It allows the execute"""
+        self.iter = self.start_node
         return self
     
     def __next__(self):
