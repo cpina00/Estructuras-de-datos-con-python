@@ -1,6 +1,3 @@
-from msilib.schema import Error
-
-
 class Node:
     def __init__(self, data):
         self.item = data
@@ -30,30 +27,22 @@ class LinkedList:
         self._len +=1
     
     def insert_to_index(self,index,data):
-        if self.start_node is None:
-            if index == 0:
-                self.insert_at_start(data)
-            else:
-                print("Error") # Añadir una excepción correspondiente.
+        if index==0:
+            self.insert_at_start(data)
+        elif index == self._len:
+            self.insert_at_end(data)
+        elif index > 0 and index <= self._len:
+            n = self.start_node
+            contador = 1
+            while contador < index:
+                n = n.ref
+                contador +=1
+            new_node = Node(data)
+            new_node.ref = n.ref
+            n.ref = new_node
+            self._len +=1
         else:
-            if index <= self._len:
-                if index == self._len:
-                    self.insert_at_end(data)
-                else:
-                    n = self.start_node
-                    contador = 1
-                    while contador < index:
-                        n = n.ref
-                        contador +=1
-                    new_node = Node(data)
-                    new_node.ref = n.ref
-                    n.ref = new_node
-                    self._len +=1
-                    
-                    
-                
-            
-            
+            raise IndexError
     
     def remove_to_begin(self):
         if self.start_node is not None:

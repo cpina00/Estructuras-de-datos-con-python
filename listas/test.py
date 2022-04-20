@@ -2,7 +2,10 @@
 #                   NO MODIFICAR ESTE ARCHIVO
 # -------------------------------------------------------------------
 
+
+
 import unittest
+
 from listas import LinkedList
 
 # Los comentarios con tres comillas dobles, son 'doc string', lo que significa que python, los considerará
@@ -189,6 +192,19 @@ class LinkedListTest(unittest.TestCase):
         p.insert(0,"test_4")
         p.pop(2)
         self.assertEqual(str(l),str(p))
+        
+    def test_len_3(self):
+        """
+        Este test determina el 'largo' de la lista LinkedList, y su resultado cuando se aplica la función len() a sus objetos
+        """
+        l = LinkedList()
+        l.insert_at_end("end_1")
+        l.insert_at_start("start_1")
+        l.insert_to_index(1,"algo")
+        l.insert_to_index(1,"algo")
+        l.remove_to_begin()
+        l.remove_to_end()
+        self.assertEqual(2,len(l))
         
     
         
