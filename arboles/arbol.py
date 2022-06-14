@@ -1,3 +1,6 @@
+from re import A
+
+
 class Node():
     def __init__(self, data = None):
         self.data = data
@@ -48,6 +51,7 @@ class Arbol():
             
     
     def mostrar_descendente(self, nodo):
+        
         if nodo.data != None and nodo.der != None and nodo.izq != None:
             return str(self.mostrar_descendente(nodo.izq)) +"->" + str(nodo) +"->"+ str(self.mostrar_descendente(nodo.der))
         elif nodo.data != None and nodo.izq != None:
@@ -66,20 +70,64 @@ class Arbol():
             return str(nodo) +"->"+ str(self.mostrar_ascendente(nodo.izq))
         elif nodo.data != None:
             return str(nodo)
-            
+        
+    """
+    Función para buscar un elemento (devuelve True o False)
+Función para contar cuantos elementos tenemos en el árbol.
+Función que cuenta cuantos niveles tiene el árbol.
+"""
+    def encontrar(self, valor):
+        if self.raiz == None:
+            return False
+        else:
+            return self._encontrar(self.raiz, valor)
+        
+    def _encontrar(self, nodo, valor):
+        if nodo.data != None:
+            if nodo.data == valor:
+                return True
+            elif nodo.data > valor:
+                if nodo.der!=None:
+                    return self._encontrar(nodo.der, valor)
+                else:
+                    return False
+            else:
+                if nodo.izq != None:
+                    return self._encontrar(nodo.izq, valor)
+                else:
+                    return False
+        else:
+            return False
+        
+    
+    
+    
 
 if __name__=="__main__":
-    arbol_a = Arbol(5)    
-    
-    arbol_a.agregar(2)
-    arbol_a.agregar(8)
-    arbol_a.agregar(1)
-    arbol_a.agregar(9)
-    arbol_a.agregar(3)
+    arbol_a = Arbol(5)
     arbol_a.agregar(10)
     arbol_a.agregar(4)
-    print(f"el arbol {arbol_a.mostrar(False)}")
-    print(f"el arbol {arbol_a.mostrar(True)}")
+    arbol_a.agregar(11)
+    arbol_a.agregar(8)
+    arbol_a.agregar(4)
+    arbol_a.agregar(5)
+    arbol_a.agregar(3)
+    arbol_a.agregar(30)
+    arbol_a.agregar(9)
+    arbol_a.agregar(8)
+    arbol_a.agregar(4)
+    arbol_a.agregar(2)
+    arbol_a.agregar(15)
+    
+    #print(f"El arbol se ve: {arbol_a.mostrar()}")
+    #print(f"El arbol se ve: {arbol_a.mostrar(True)}")
+    print(arbol_a.encontrar(15))
+    print(arbol_a.encontrar(16))
+    
+    
+    
+    
     
     
         
+   
